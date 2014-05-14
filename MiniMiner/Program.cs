@@ -96,7 +96,7 @@ namespace MiniMiner
                         break;
 
                 //standard share difficulty matched! (target:ffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000)
-                if(zeroBytes == 4)
+                if(zeroBytes >= 4)
                     return true;
 
                 //increase
@@ -173,7 +173,7 @@ namespace MiniMiner
 
         private byte[] ParseData(string json)
         {
-            Match match = Regex.Match(json, "\"data\": \"([A-Fa-f0-9]+)");
+            Match match = Regex.Match(json, "\"data\":\"([A-Fa-f0-9]+)");
             if (match.Success)
             {
                 string data = Utils.RemovePadding(match.Groups[1].Value);
